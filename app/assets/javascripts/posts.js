@@ -1,41 +1,43 @@
-// $(function(){
+// $(function() {
+//   //hijack link
 //   // $("a.load_comments").on("click", function(e){
-//     // You just clicked on the Load Comments Link
-//     // We'd love to use the HREF attribute of that link as the URL for the request
+//     //you clicked on the load comments link
+//     // use that link
 //
-//     // Fire some ajax.
+//     // fire ajax -- low level, very detailed
 //     // $.ajax({
 //     //   method: "GET",
-//     //   url: this.href
-//     // }).success(function(response){
-//     //   // Get the response (it's the variable data)
-//     //   $("div.comments").html(response)
-//     //   // We'd really want to load that data into the DOM (add it to the current page)
-//     // }).error(function(notNeeded){
-//     //   alert("we broke!!!!")
+//     //   url: this.href,
+//     // }).success(function(data) {
+//     //   //get the response
+//     //   $("div.comments").html(data)
+//     //   // want to load data into DOM
+//     // }).error(function(no){
+//     //   alert("we broke :(")
 //     // });
 //
-//     // Requesting HTML
+//     // requesting html
 //     // $.get(this.href).success(function(response){
-//     //   $("div.comments").html(response)
-//     // })
-//
-//     // Requesting JSON
-//     // $.get(this.href).success(function(json){
-//     //   // clear the OL html (in case there were stale comments)
-//     //   var $ol = $("div.comments ol")
-//     //   $ol.html("") // emptied the OL
+//     // //   $("div.comments").html(response)
+//     // // })
 //     //
-//     //   // iterate over each comment within json
+//     // // request json
+//     // $.get(this.href).success(function(json){
+//     //   // clear ol html
+//     //   var $ol = $("div.comments ol")
+//     //   $ol.html(" ")
+//     //   //iterate over each comment within json
+//     //   // with each comment, append li to ol
+//     //
 //     //   json.forEach(function(comment){
-//     //     // with each comment data, append an LI to the OL with the comment content
 //     //     $ol.append("<li>" + comment.content + "</li>");
 //     //   })
+//     //
+//     //   // inject
 //     // })
-//
-//
-//     // load that response into the HTML of the page.
+//   //
 //   //   e.preventDefault();
+//   //
 //   // })
 //
 //   $("a.load_comments").on("click", function(e){
@@ -43,7 +45,6 @@
 //       url: this.href,
 //       dataType: 'script'
 //     })
-//
 //     e.preventDefault();
 //   })
 // })

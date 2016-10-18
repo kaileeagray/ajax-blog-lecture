@@ -1,0 +1,3521 @@
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.4ms)[0m  select sqlite_version(*)
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreatePosts (20160222203640)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "content" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160222203640"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreateComments (20160222203701)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" text, "post_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160222203701"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for ::1 at 2016-10-17 18:12:28 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/railties-4.2.5.1/lib/rails/templates/rails/welcome/index.html.erb (2.3ms)
+Completed 200 OK in 24ms (Views: 14.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for ::1 at 2016-10-17 18:12:33 -0500
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 2813ms (Views: 2807.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:12:36 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:12:36 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:12:36 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:12:36 -0500
+
+
+Started GET "/assets/posts.self-bb1a65744b561dd678f156aa3d334bcb1705003dc65e4cf646bb2948a271c645.js?body=1" for ::1 at 2016-10-17 18:12:36 -0500
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-10-17 18:12:36 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:12:36 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:12:36 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:12:36 -0500
+
+
+Started GET "/posts/new" for ::1 at 2016-10-17 18:12:39 -0500
+Processing by PostsController#new as HTML
+  Rendered posts/_form.html.erb (30.2ms)
+  Rendered posts/new.html.erb within layouts/application (37.0ms)
+Completed 200 OK in 57ms (Views: 51.5ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/posts" for ::1 at 2016-10-17 18:12:49 -0500
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+b5WW/iQIdoMy6tEz8mllFKWm+WUV9eEeh8IDwQPSPhYhS8wDbKhF3qeaymSrvYXJeu+h8qE0VqqYysrJZu5OQ==", "post"=>{"title"=>"first post", "content"=>"with content\r\n"}, "commit"=>"Create Post"}
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "posts" ("title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "first post"], ["content", "with content\r\n"], ["created_at", "2016-10-17 23:12:49.482926"], ["updated_at", "2016-10-17 23:12:49.482926"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 14ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:12:49 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (1.7ms)
+  Rendered posts/show.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 72ms (Views: 31.0ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/posts/1/comments" for ::1 at 2016-10-17 18:12:54 -0500
+Processing by CommentsController#create as JS
+  Parameters: {"utf8"=>"✓", "comment"=>{"content"=>"hello!"}, "commit"=>"Create Comment", "post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("content", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["content", "hello!"], ["post_id", 1], ["created_at", "2016-10-17 23:12:54.854982"], ["updated_at", "2016-10-17 23:12:54.854982"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  Rendered comments/_comment.html.erb (0.5ms)
+  Rendered comments/create.js.erb (12.6ms)
+Completed 200 OK in 39ms (Views: 27.7ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/posts/1/comments" for ::1 at 2016-10-17 18:13:01 -0500
+Processing by CommentsController#create as JS
+  Parameters: {"utf8"=>"✓", "comment"=>{"content"=>"bye"}, "commit"=>"Create Comment", "post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("content", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["content", "bye"], ["post_id", 1], ["created_at", "2016-10-17 23:13:01.587207"], ["updated_at", "2016-10-17 23:13:01.587207"]]
+  [1m[36m (2.0ms)[0m  [1mcommit transaction[0m
+  Rendered comments/_comment.html.erb (0.1ms)
+  Rendered comments/create.js.erb (10.3ms)
+Completed 200 OK in 30ms (Views: 22.9ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:13:40 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (1.4ms)
+  Rendered posts/show.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 27ms (Views: 25.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:13:40 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:13:40 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:13:40 -0500
+
+
+Started GET "/assets/posts.self-bb1a65744b561dd678f156aa3d334bcb1705003dc65e4cf646bb2948a271c645.js?body=1" for ::1 at 2016-10-17 18:13:40 -0500
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-10-17 18:13:40 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:13:40 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:13:40 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:13:40 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:13:40 -0500
+
+
+Started GET "/posts/1/edit" for ::1 at 2016-10-17 18:13:43 -0500
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_form.html.erb (2.1ms)
+  Rendered posts/edit.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 23ms (Views: 22.2ms | ActiveRecord: 0.1ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:22:39 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 414ms (Views: 383.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:22:39 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:22:39 -0500
+
+
+Started GET "/assets/posts.self-9cbf0a5ca7523cfd93768896bc97b7cebcfa98ddf4c689a52fba9babbedb36c6.js?body=1" for ::1 at 2016-10-17 18:22:39 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:22:39 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:22:39 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:22:39 -0500
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:22:39 -0500
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-10-17 18:22:40 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:22:40 -0500
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:22:41 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (8.3ms)
+  Rendered comments/index.js.erb (13.0ms)
+Completed 200 OK in 33ms (Views: 16.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:22:42 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.9ms)
+  Rendered comments/index.js.erb (2.7ms)
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:22:44 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (1.1ms)
+  Rendered comments/index.js.erb (3.0ms)
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:22:49 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (1.2ms)
+  Rendered comments/index.js.erb (3.0ms)
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:23:38 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.9ms)
+  Rendered comments/index.js.erb (3.1ms)
+Completed 200 OK in 8ms (Views: 5.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:24:27 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (1.4ms)
+  Rendered comments/index.js.erb (4.5ms)
+Completed 200 OK in 8ms (Views: 6.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:26:53 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 103ms (Views: 102.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:26:53 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:26:53 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:26:53 -0500
+
+
+Started GET "/assets/posts.self-714983532835cc64b2a6826122e05c72ae25c7b61e3ced35d884c12ef4befe41.js?body=1" for ::1 at 2016-10-17 18:26:53 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:26:53 -0500
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-10-17 18:26:53 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:26:53 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:26:53 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:26:53 -0500
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:26:54 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.8ms)
+  Rendered comments/index.js.erb (2.7ms)
+Completed 200 OK in 6ms (Views: 4.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:26:55 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.6ms)
+  Rendered comments/index.js.erb (2.1ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:26:57 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (1.2ms)
+  Rendered comments/index.js.erb (2.7ms)
+Completed 200 OK in 6ms (Views: 4.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:26:58 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.7ms)
+  Rendered comments/index.js.erb (2.3ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:27:18 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (1.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 20ms (Views: 17.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:27:18 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:27:18 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:27:18 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:27:18 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:27:18 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:27:18 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:27:18 -0500
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-10-17 18:27:18 -0500
+
+
+Started GET "/assets/posts.self-714983532835cc64b2a6826122e05c72ae25c7b61e3ced35d884c12ef4befe41.js?body=1" for ::1 at 2016-10-17 18:27:18 -0500
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:27:19 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.7ms)
+  Rendered comments/index.js.erb (2.7ms)
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:27:20 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.8ms)
+  Rendered comments/index.js.erb (2.4ms)
+Completed 200 OK in 6ms (Views: 4.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:27:21 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.8ms)
+  Rendered comments/index.js.erb (2.3ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:27:22 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (1.0ms)
+  Rendered comments/index.js.erb (2.6ms)
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:27:39 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 303ms (Views: 275.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:27:39 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:27:39 -0500
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:27:39 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:27:39 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:27:39 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:27:39 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:27:39 -0500
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-10-17 18:27:39 -0500
+
+
+Started GET "/assets/posts.self-714983532835cc64b2a6826122e05c72ae25c7b61e3ced35d884c12ef4befe41.js?body=1" for ::1 at 2016-10-17 18:27:39 -0500
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:27:40 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (6.3ms)
+  Rendered comments/index.js.erb (9.9ms)
+Completed 200 OK in 28ms (Views: 14.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:27:41 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.7ms)
+  Rendered comments/index.js.erb (2.1ms)
+Completed 200 OK in 6ms (Views: 3.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:29:30 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 97ms (Views: 96.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:29:32 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 14ms (Views: 12.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:29:32 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:29:32 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:29:32 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:29:32 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:29:32 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:29:32 -0500
+
+
+Started GET "/assets/posts.self-714983532835cc64b2a6826122e05c72ae25c7b61e3ced35d884c12ef4befe41.js?body=1" for ::1 at 2016-10-17 18:29:32 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:29:32 -0500
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:29:34 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.7ms)
+  Rendered comments/index.js.erb (2.1ms)
+Completed 200 OK in 6ms (Views: 3.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:29:43 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (1.0ms)
+  Rendered comments/index.js.erb (2.4ms)
+Completed 200 OK in 6ms (Views: 4.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:29:43 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.6ms)
+  Rendered comments/index.js.erb (2.1ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2016-10-17 18:30:33 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/railties-4.2.5.1/lib/rails/templates/rails/welcome/index.html.erb (0.7ms)
+Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:30:37 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 17ms (Views: 15.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:30:38 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.7ms)
+  Rendered comments/index.js.erb (2.1ms)
+Completed 200 OK in 6ms (Views: 3.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:30:39 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.8ms)
+  Rendered comments/index.js.erb (2.2ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:30:40 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.6ms)
+  Rendered comments/index.js.erb (2.7ms)
+Completed 200 OK in 24ms (Views: 4.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:31:14 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 104ms (Views: 102.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:31:14 -0500
+
+
+Started GET "/assets/posts.self-cf8135ca9a08d3b88057485affe54d58700813be806e1a7a46d081b9ec42ccf1.js?body=1" for ::1 at 2016-10-17 18:31:14 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:31:14 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:31:14 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:31:14 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:31:14 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:31:14 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:31:14 -0500
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:31:15 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.9ms)
+  Rendered comments/index.js.erb (2.8ms)
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:31:16 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.9ms)
+  Rendered comments/index.js.erb (2.5ms)
+Completed 200 OK in 6ms (Views: 4.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:31:16 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (1.3ms)
+  Rendered comments/index.js.erb (3.0ms)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:31:22 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 26ms (Views: 22.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:31:22 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:31:22 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:31:22 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:31:22 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:31:22 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:31:22 -0500
+
+
+Started GET "/assets/posts.self-cf8135ca9a08d3b88057485affe54d58700813be806e1a7a46d081b9ec42ccf1.js?body=1" for ::1 at 2016-10-17 18:31:22 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:31:22 -0500
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:31:25 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.6ms)
+  Rendered comments/index.js.erb (2.5ms)
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:31:25 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.6ms)
+  Rendered comments/index.js.erb (2.7ms)
+Completed 200 OK in 6ms (Views: 4.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:32:24 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 110ms (Views: 109.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:32:24 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:32:24 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:32:24 -0500
+
+
+Started GET "/assets/posts.self-7b24d9d72e3bd7b2660f3bc68ab6d1c3a35653fc70d02c6095843c4c83935ace.js?body=1" for ::1 at 2016-10-17 18:32:24 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:32:24 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:32:24 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:32:24 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:32:24 -0500
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:32:27 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.9ms)
+  Rendered comments/index.js.erb (3.0ms)
+Completed 200 OK in 9ms (Views: 5.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:32:43 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 104ms (Views: 102.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:32:43 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:32:43 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:32:43 -0500
+
+
+Started GET "/assets/posts.self-c315ee5d2ffd6a49b2a564cce550c7304c2fe1826d5dfc68188fe43abc9bf350.js?body=1" for ::1 at 2016-10-17 18:32:43 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:32:43 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:32:43 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:32:43 -0500
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:32:43 -0500
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:32:45 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.7ms)
+  Rendered comments/index.js.erb (2.1ms)
+Completed 200 OK in 9ms (Views: 5.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:38:19 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 101ms (Views: 99.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:38:19 -0500
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:38:19 -0500
+
+
+Started GET "/assets/posts.self-14bd2a0cd439d71343e9e3d792fca3f50762e334f9e6d14c006143a829a9898e.js?body=1" for ::1 at 2016-10-17 18:38:19 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:38:19 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:38:19 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:38:19 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:38:19 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:38:19 -0500
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:38:21 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.7ms)
+  Rendered comments/index.js.erb (2.5ms)
+Completed 200 OK in 6ms (Views: 4.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:38:28 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 103ms (Views: 100.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:38:28 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:38:28 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:38:28 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:38:28 -0500
+
+
+Started GET "/assets/posts.self-0e2181f195591883f3afe5954191edeced34184a0cdc841fc3ec4c5113efea63.js?body=1" for ::1 at 2016-10-17 18:38:28 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:38:28 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:38:28 -0500
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:38:28 -0500
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:38:30 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.7ms)
+  Rendered comments/index.js.erb (2.4ms)
+Completed 200 OK in 6ms (Views: 4.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:38:53 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 124ms (Views: 122.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:38:53 -0500
+
+
+Started GET "/assets/posts.self-bf3441867257a2176c5d95d3c90fc8c26103360a984dee59962a0bfedecc1d9b.js?body=1" for ::1 at 2016-10-17 18:38:53 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:38:53 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:38:53 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:38:53 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:38:53 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:38:53 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:38:53 -0500
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:38:53 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/index.html.erb (1.6ms)
+Completed 200 OK in 7ms (Views: 5.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:39:31 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (1.0ms)
+  Rendered comments/index.js.erb (4.0ms)
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:39:57 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 98ms (Views: 97.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:39:57 -0500
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:39:57 -0500
+
+
+Started GET "/assets/posts.self-8785c231defae45d0a6934a691d0dbba4dad2bf017e6e06c8d27b957012202b5.js?body=1" for ::1 at 2016-10-17 18:39:57 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:39:57 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:39:57 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:39:57 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:39:57 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:39:57 -0500
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:39:58 -0500
+Processing by PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 38ms (Views: 36.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:40:01 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.7ms)
+  Rendered comments/index.js.erb (2.3ms)
+Completed 200 OK in 7ms (Views: 5.2ms | ActiveRecord: 0.3ms)
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts"  ORDER BY "posts"."id" ASC LIMIT 1[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM "comments" WHERE "comments"."id" = ?  [["id", 1]]
+  [1m[36mSQL (0.0ms)[0m  [1mDELETE FROM "comments" WHERE "comments"."id" = ?[0m  [["id", 2]]
+  [1m[35m (1.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "comments" ("content", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["content", "made in console"], ["post_id", 1], ["created_at", "2016-10-17 23:42:10.807175"], ["updated_at", "2016-10-17 23:42:10.807175"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:42:23 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 307ms (Views: 279.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:42:24 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:42:24 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:42:24 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:42:24 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:42:24 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:42:24 -0500
+
+
+Started GET "/assets/posts.self-8785c231defae45d0a6934a691d0dbba4dad2bf017e6e06c8d27b957012202b5.js?body=1" for ::1 at 2016-10-17 18:42:24 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:42:24 -0500
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:42:24 -0500
+Processing by PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 32ms (Views: 30.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:42:29 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (8.7ms)
+  Rendered comments/index.js.erb (12.6ms)
+Completed 200 OK in 41ms (Views: 19.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:42:43 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 28ms (Views: 26.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:42:43 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:42:43 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:42:43 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:42:43 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:42:43 -0500
+
+
+Started GET "/assets/posts.self-8785c231defae45d0a6934a691d0dbba4dad2bf017e6e06c8d27b957012202b5.js?body=1" for ::1 at 2016-10-17 18:42:43 -0500
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:42:43 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:42:43 -0500
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:42:43 -0500
+Processing by PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 43ms (Views: 41.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:42:46 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.8ms)
+  Rendered comments/index.js.erb (2.6ms)
+Completed 200 OK in 8ms (Views: 4.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:43:20 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 102ms (Views: 92.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:43:20 -0500
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:43:20 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:43:20 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:43:20 -0500
+
+
+Started GET "/assets/posts.self-4ed8ffdaa689411d9d089f91d6e7dfd9900f207c45edb29ab255027ef54a4eb7.js?body=1" for ::1 at 2016-10-17 18:43:20 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:43:20 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:43:20 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:43:20 -0500
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:43:20 -0500
+Processing by PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 98ms (Views: 93.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:43:21 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (5.3ms)
+  Rendered comments/index.js.erb (17.5ms)
+Completed 200 OK in 40ms (Views: 35.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:43:22 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.7ms)
+  Rendered comments/index.js.erb (10.6ms)
+Completed 200 OK in 26ms (Views: 24.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:44:34 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 31ms (Views: 22.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:44:34 -0500
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:44:34 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:44:34 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:44:34 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:44:34 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:44:34 -0500
+
+
+Started GET "/assets/posts.self-4ed8ffdaa689411d9d089f91d6e7dfd9900f207c45edb29ab255027ef54a4eb7.js?body=1" for ::1 at 2016-10-17 18:44:34 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:44:34 -0500
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:44:34 -0500
+Processing by PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 82ms (Views: 79.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:44:36 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/index.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 41ms (Views: 35.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:45:06 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 29ms (Views: 27.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:45:18 -0500
+Processing by CommentsController#index as HTML
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 20ms (Views: 18.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:45:18 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 40ms (Views: 38.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:46:34 -0500
+Processing by CommentsController#index as HTML
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/index.html.erb (3.8ms)
+Completed 200 OK in 16ms (Views: 6.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:46:40 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 22ms (Views: 20.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:46:40 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:46:40 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:46:40 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:46:40 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:46:40 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:46:40 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:46:40 -0500
+
+
+Started GET "/assets/posts.self-4ed8ffdaa689411d9d089f91d6e7dfd9900f207c45edb29ab255027ef54a4eb7.js?body=1" for ::1 at 2016-10-17 18:46:40 -0500
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:46:40 -0500
+Processing by PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 29ms (Views: 27.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:46:49 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 305ms (Views: 275.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:46:49 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:46:49 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:46:49 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:46:49 -0500
+
+
+Started GET "/assets/posts.self-4ed8ffdaa689411d9d089f91d6e7dfd9900f207c45edb29ab255027ef54a4eb7.js?body=1" for ::1 at 2016-10-17 18:46:49 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:46:49 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:46:49 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:46:49 -0500
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:46:49 -0500
+Processing by PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 31ms (Views: 29.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:46:53 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/index.html.erb (6.0ms)
+Completed 200 OK in 31ms (Views: 17.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:47:18 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 14ms (Views: 12.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:47:18 -0500
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:47:18 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:47:18 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:47:18 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:47:18 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:47:18 -0500
+
+
+Started GET "/assets/posts.self-4ed8ffdaa689411d9d089f91d6e7dfd9900f207c45edb29ab255027ef54a4eb7.js?body=1" for ::1 at 2016-10-17 18:47:18 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:47:18 -0500
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:47:18 -0500
+Processing by PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 38ms (Views: 36.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:47:19 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 15ms (Views: 13.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:47:19 -0500
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:47:19 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:47:19 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:47:19 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:47:19 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:47:19 -0500
+
+
+Started GET "/assets/posts.self-4ed8ffdaa689411d9d089f91d6e7dfd9900f207c45edb29ab255027ef54a4eb7.js?body=1" for ::1 at 2016-10-17 18:47:19 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:47:19 -0500
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:47:19 -0500
+Processing by PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 25ms (Views: 23.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:47:21 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/index.html.erb (0.8ms)
+Completed 200 OK in 14ms (Views: 12.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:47:39 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 117ms (Views: 116.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:47:40 -0500
+
+
+Started GET "/assets/posts.self-669152817e8b884beceb855862fe3a0c50b48a7f4d79e1a147c4f92be6fbffb4.js?body=1" for ::1 at 2016-10-17 18:47:40 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:47:40 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:47:40 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:47:40 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:47:40 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:47:40 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:47:40 -0500
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:47:41 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/index.html.erb (1.1ms)
+Completed 200 OK in 14ms (Views: 11.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:47:41 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/index.html.erb (0.7ms)
+Completed 200 OK in 15ms (Views: 12.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:49:09 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 16ms (Views: 14.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:49:09 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:49:09 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:49:09 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:49:09 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:49:09 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:49:09 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:49:09 -0500
+
+
+Started GET "/assets/posts.self-669152817e8b884beceb855862fe3a0c50b48a7f4d79e1a147c4f92be6fbffb4.js?body=1" for ::1 at 2016-10-17 18:49:09 -0500
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:49:11 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 16ms (Views: 14.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:49:11 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:49:11 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:49:11 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:49:11 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:49:11 -0500
+
+
+Started GET "/assets/posts.self-669152817e8b884beceb855862fe3a0c50b48a7f4d79e1a147c4f92be6fbffb4.js?body=1" for ::1 at 2016-10-17 18:49:11 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:49:11 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:49:11 -0500
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:49:12 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/index.html.erb (0.8ms)
+Completed 200 OK in 14ms (Views: 11.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:49:12 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/index.html.erb (0.6ms)
+Completed 200 OK in 15ms (Views: 13.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:49:40 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 105ms (Views: 103.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:49:40 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:49:40 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:49:40 -0500
+
+
+Started GET "/assets/posts.self-54f32d341bccd7b9400f51873632c46e80a278404b370f9f638439ab9c4613e7.js?body=1" for ::1 at 2016-10-17 18:49:40 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:49:40 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:49:40 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:49:40 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:49:40 -0500
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:49:47 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/index.html.erb (0.7ms)
+Completed 200 OK in 14ms (Views: 11.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:49:47 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/index.html.erb (1.0ms)
+Completed 200 OK in 17ms (Views: 14.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:51:28 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 93ms (Views: 92.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:51:28 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:51:28 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:51:28 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:51:28 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:51:28 -0500
+
+
+Started GET "/assets/posts.self-a95a910077fe941410fce7b6578a76514a875d3f45667a5a417fa08f6c55501c.js?body=1" for ::1 at 2016-10-17 18:51:28 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:51:28 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:51:28 -0500
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:51:30 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/index.html.erb (0.8ms)
+Completed 200 OK in 14ms (Views: 10.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:51:30 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/index.html.erb (0.6ms)
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:51:53 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 96ms (Views: 94.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:51:53 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:51:53 -0500
+
+
+Started GET "/assets/posts.self-c135b2298e3467a21f0e8f17f253b345d2b5d50284df1a029d69256f093d3e01.js?body=1" for ::1 at 2016-10-17 18:51:53 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:51:53 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:51:53 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:51:53 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:51:53 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:51:53 -0500
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:51:54 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/index.html.erb (0.7ms)
+Completed 200 OK in 14ms (Views: 11.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:51:54 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/index.html.erb (0.6ms)
+Completed 200 OK in 13ms (Views: 11.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:51:56 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/index.html.erb (0.6ms)
+Completed 200 OK in 11ms (Views: 9.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:51:56 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/index.html.erb (0.6ms)
+Completed 200 OK in 13ms (Views: 11.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:51:58 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/index.html.erb (0.7ms)
+Completed 200 OK in 11ms (Views: 10.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:51:58 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/index.html.erb (0.7ms)
+Completed 200 OK in 12ms (Views: 11.1ms | ActiveRecord: 0.2ms)
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts"  ORDER BY "posts"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO "comments" ("content", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Will this load next time?"], ["post_id", 1], ["created_at", "2016-10-17 23:52:35.531222"], ["updated_at", "2016-10-17 23:52:35.531222"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:52:40 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 18ms (Views: 16.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:52:40 -0500
+
+
+Started GET "/assets/posts.self-c135b2298e3467a21f0e8f17f253b345d2b5d50284df1a029d69256f093d3e01.js?body=1" for ::1 at 2016-10-17 18:52:40 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:52:40 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:52:40 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:52:40 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:52:40 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:52:40 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:52:40 -0500
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:52:41 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/index.html.erb (0.7ms)
+Completed 200 OK in 14ms (Views: 12.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:52:41 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/index.html.erb (1.0ms)
+Completed 200 OK in 13ms (Views: 11.1ms | ActiveRecord: 0.2ms)
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts"  ORDER BY "posts"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "comments" ("content", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Will this loade?"], ["post_id", 1], ["created_at", "2016-10-17 23:53:08.937171"], ["updated_at", "2016-10-17 23:53:08.937171"]]
+  [1m[35m (1.8ms)[0m  commit transaction
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:53:11 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/index.html.erb (0.7ms)
+Completed 200 OK in 11ms (Views: 10.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:53:11 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/index.html.erb (0.7ms)
+Completed 200 OK in 14ms (Views: 11.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:53:34 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/index.html.erb (0.8ms)
+Completed 200 OK in 12ms (Views: 10.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:53:34 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/index.html.erb (0.6ms)
+Completed 200 OK in 13ms (Views: 11.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:53:35 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/index.html.erb (0.7ms)
+Completed 200 OK in 17ms (Views: 10.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:53:35 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/index.html.erb (1.3ms)
+Completed 200 OK in 13ms (Views: 11.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:55:13 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 110ms (Views: 107.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:55:13 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:55:13 -0500
+
+
+Started GET "/assets/posts.self-c60635ea5ca4be839d799607518ad8ebb6e2db8083945b9ae8e4435e1b1e9076.js?body=1" for ::1 at 2016-10-17 18:55:14 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:55:14 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:55:14 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:55:14 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:55:14 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:55:14 -0500
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:55:15 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/index.html.erb (1.5ms)
+Completed 200 OK in 18ms (Views: 16.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:55:15 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/index.html.erb (0.8ms)
+Completed 200 OK in 18ms (Views: 15.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:55:34 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 23ms (Views: 15.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:55:34 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:55:34 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:55:34 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:55:34 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:55:34 -0500
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:55:34 -0500
+
+
+Started GET "/assets/posts.self-c60635ea5ca4be839d799607518ad8ebb6e2db8083945b9ae8e4435e1b1e9076.js?body=1" for ::1 at 2016-10-17 18:55:34 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:55:34 -0500
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:55:35 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.4ms)
+
+RuntimeError ({"controller"=>"comments", "action"=>"index", "post_id"=>"1"}):
+  app/controllers/comments_controller.rb:9:in `index'
+
+
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.9ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.9ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.6ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (51.0ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:55:35 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.1ms)
+
+RuntimeError ({"controller"=>"comments", "action"=>"index", "post_id"=>"1"}):
+  app/controllers/comments_controller.rb:9:in `index'
+
+
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.7ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.6ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.7ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (56.4ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:55:55 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/index.html.erb (4.6ms)
+Completed 200 OK in 25ms (Views: 15.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:55:55 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/index.html.erb (0.9ms)
+Completed 200 OK in 16ms (Views: 13.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 18:58:22 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 93ms (Views: 91.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:58:23 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 18:58:23 -0500
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 18:58:23 -0500
+
+
+Started GET "/assets/posts.self-10d875a057f8a0ca588dbf5cafd43eaabe9177020ee2858c2b6d6f2c698919e1.js?body=1" for ::1 at 2016-10-17 18:58:23 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 18:58:23 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 18:58:23 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 18:58:23 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 18:58:23 -0500
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:58:24 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/index.html.erb (0.8ms)
+Completed 200 OK in 14ms (Views: 11.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 18:58:24 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/index.html.erb (0.8ms)
+Completed 200 OK in 14ms (Views: 11.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:01:18 -0500
+Processing by CommentsController#index as HTML
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/index.html.erb (1.2ms)
+Completed 200 OK in 5ms (Views: 2.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments.json" for ::1 at 2016-10-17 19:01:34 -0500
+Processing by CommentsController#index as JSON
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.2ms)
+
+ActionView::MissingTemplate (Missing template comments/index, application/index with {:locale=>[:en], :formats=>[:json], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/kaileegray/Development/code/ajax-blog-lecture/app/views"
+):
+  app/controllers/comments_controller.rb:9:in `index'
+
+
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.0ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (51.5ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (52.6ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (112.5ms)
+
+
+Started GET "/posts/1/comments.json" for ::1 at 2016-10-17 19:01:56 -0500
+Processing by CommentsController#index as JSON
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+Completed 500 Internal Server Error in 17ms (Views: 5.7ms | ActiveRecord: 1.0ms)
+
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  app/controllers/comments_controller.rb:9:in `index'
+
+
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.1ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (49.4ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (42.9ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (96.7ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:02:00 -0500
+Processing by CommentsController#index as HTML
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+Completed 500 Internal Server Error in 5ms (Views: 2.3ms | ActiveRecord: 0.3ms)
+
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  app/controllers/comments_controller.rb:9:in `index'
+
+
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.7ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (52.9ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (41.7ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (92.5ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:02:07 -0500
+Processing by CommentsController#index as HTML
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+Completed 200 OK in 14ms (Views: 4.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts/" for ::1 at 2016-10-17 19:02:47 -0500
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 106ms (Views: 104.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/posts.self-11d3b3c4df1b6acd3c50b744cfee1d88835c6e9c6489249c1fd2c094a2e41946.js?body=1" for ::1 at 2016-10-17 19:02:47 -0500
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 19:02:48 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:02:50 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:02:50 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 19:07:10 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 98ms (Views: 96.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:07:10 -0500
+
+
+Started GET "/assets/posts.self-c830af585134724b96375158572f3867c6d48ec65c983b138fda7faab8f33ff7.js?body=1" for ::1 at 2016-10-17 19:07:10 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:07:10 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 19:07:10 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 19:07:10 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 19:07:10 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 19:07:10 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 19:07:10 -0500
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:07:11 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+Completed 200 OK in 5ms (Views: 2.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:07:11 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 19:08:36 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 97ms (Views: 96.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:08:36 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:08:36 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 19:08:36 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 19:08:36 -0500
+
+
+Started GET "/assets/posts.self-416673fff8f8735f42f326c5e5dd6f3d2575883cbda5a68d42b3e13d282439d8.js?body=1" for ::1 at 2016-10-17 19:08:36 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 19:08:36 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 19:08:36 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 19:08:36 -0500
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:08:37 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:08:37 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+Completed 200 OK in 4ms (Views: 1.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 19:14:27 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 114ms (Views: 111.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:14:27 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 19:14:27 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 19:14:27 -0500
+
+
+Started GET "/assets/posts.self-b70557218817ec8370420d7b4c8775559cb6caff876688de7d3c968647222033.js?body=1" for ::1 at 2016-10-17 19:14:27 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:14:27 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 19:14:27 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 19:14:27 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 19:14:27 -0500
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 19:14:28 -0500
+Processing by PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 148ms (Views: 146.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments?_=1476749668061" for ::1 at 2016-10-17 19:14:29 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"_"=>"1476749668061", "post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:14:29 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 19:15:02 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 22ms (Views: 15.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:15:02 -0500
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:15:02 -0500
+
+
+Started GET "/assets/posts.self-b70557218817ec8370420d7b4c8775559cb6caff876688de7d3c968647222033.js?body=1" for ::1 at 2016-10-17 19:15:02 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 19:15:02 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 19:15:02 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 19:15:02 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 19:15:02 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 19:15:02 -0500
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 19:15:02 -0500
+Processing by PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 40ms (Views: 38.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments?_=1476749702600" for ::1 at 2016-10-17 19:15:03 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"_"=>"1476749702600", "post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/index.html.erb (5.6ms)
+Completed 200 OK in 23ms (Views: 17.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:15:03 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/index.html.erb (0.8ms)
+Completed 200 OK in 14ms (Views: 11.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 19:15:29 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 123ms (Views: 121.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:15:29 -0500
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:15:29 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 19:15:29 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 19:15:29 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 19:15:29 -0500
+
+
+Started GET "/assets/posts.self-b5b066e19898ce7dbe5103d80d28d43aaf59bcc72f3e2773ca300bbee01864c4.js?body=1" for ::1 at 2016-10-17 19:15:29 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 19:15:30 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 19:15:30 -0500
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 19:15:32 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 19ms (Views: 17.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:15:32 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:15:32 -0500
+
+
+Started GET "/assets/posts.self-b5b066e19898ce7dbe5103d80d28d43aaf59bcc72f3e2773ca300bbee01864c4.js?body=1" for ::1 at 2016-10-17 19:15:32 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 19:15:32 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 19:15:32 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 19:15:32 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 19:15:32 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 19:15:32 -0500
+
+
+Started GET "/posts/1/comments?_=1476749732909" for ::1 at 2016-10-17 19:15:33 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"_"=>"1476749732909", "post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/index.html.erb (0.8ms)
+Completed 200 OK in 16ms (Views: 13.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:15:33 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/index.html.erb (0.8ms)
+Completed 200 OK in 14ms (Views: 12.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 19:16:13 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 17ms (Views: 15.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:16:13 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:16:13 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 19:16:13 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 19:16:14 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 19:16:14 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 19:16:14 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 19:16:14 -0500
+
+
+Started GET "/assets/posts.self-b5b066e19898ce7dbe5103d80d28d43aaf59bcc72f3e2773ca300bbee01864c4.js?body=1" for ::1 at 2016-10-17 19:16:14 -0500
+
+
+Started GET "/posts/1/comments?_=1476749774154" for ::1 at 2016-10-17 19:16:15 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"_"=>"1476749774154", "post_id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered comments/index.js.erb (0.3ms)
+Completed 200 OK in 18ms (Views: 15.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:16:15 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered comments/index.js.erb (0.0ms)
+Completed 200 OK in 15ms (Views: 12.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments?_=1476749774155" for ::1 at 2016-10-17 19:18:43 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"_"=>"1476749774155", "post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered comments/index.js.erb (0.3ms)
+Completed 200 OK in 14ms (Views: 12.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:18:43 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered comments/index.js.erb (0.0ms)
+Completed 200 OK in 12ms (Views: 10.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 19:19:24 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 20ms (Views: 19.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:19:24 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:19:24 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 19:19:25 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 19:19:25 -0500
+
+
+Started GET "/assets/posts.self-b5b066e19898ce7dbe5103d80d28d43aaf59bcc72f3e2773ca300bbee01864c4.js?body=1" for ::1 at 2016-10-17 19:19:25 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 19:19:25 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 19:19:25 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 19:19:25 -0500
+
+
+Started GET "/posts/1/comments?_=1476749965191" for ::1 at 2016-10-17 19:19:26 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"_"=>"1476749965191", "post_id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered comments/index.js.erb (0.3ms)
+Completed 200 OK in 17ms (Views: 15.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:19:26 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered comments/index.js.erb (0.0ms)
+Completed 200 OK in 15ms (Views: 12.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments?_=1476749965192" for ::1 at 2016-10-17 19:19:26 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"_"=>"1476749965192", "post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered comments/index.js.erb (0.0ms)
+Completed 200 OK in 14ms (Views: 11.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:19:26 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered comments/index.js.erb (0.1ms)
+Completed 200 OK in 15ms (Views: 11.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments?_=1476749965193" for ::1 at 2016-10-17 19:19:26 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"_"=>"1476749965193", "post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered comments/index.js.erb (0.0ms)
+Completed 200 OK in 13ms (Views: 11.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:19:27 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered comments/index.js.erb (0.0ms)
+Completed 200 OK in 14ms (Views: 11.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1/comments?_=1476749965194" for ::1 at 2016-10-17 19:19:27 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"_"=>"1476749965194", "post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered comments/index.js.erb (0.0ms)
+Completed 200 OK in 12ms (Views: 10.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:19:27 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered comments/index.js.erb (0.0ms)
+Completed 200 OK in 15ms (Views: 12.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts/1/comments?_=1476749965195" for ::1 at 2016-10-17 19:19:28 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"_"=>"1476749965195", "post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered comments/index.js.erb (0.0ms)
+Completed 200 OK in 12ms (Views: 10.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:19:28 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered comments/index.js.erb (0.0ms)
+Completed 200 OK in 15ms (Views: 11.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 19:20:58 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 23ms (Views: 20.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:20:58 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:20:58 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 19:20:58 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 19:20:58 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 19:20:58 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 19:20:58 -0500
+
+
+Started GET "/assets/posts.self-b5b066e19898ce7dbe5103d80d28d43aaf59bcc72f3e2773ca300bbee01864c4.js?body=1" for ::1 at 2016-10-17 19:20:58 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 19:20:58 -0500
+
+
+Started GET "/posts/1/comments?_=1476750058276" for ::1 at 2016-10-17 19:20:58 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"_"=>"1476750058276", "post_id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered comments/index.js.erb (12.9ms)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.2ms)
+
+ActionView::Template::Error (undefined method `first' for nil:NilClass):
+    1: $("div.comments").append('<%= @comment.first.content%>')
+  app/views/comments/index.js.erb:1:in `_app_views_comments_index_js_erb___447825351644879378_70348781531320'
+  app/controllers/comments_controller.rb:7:in `index'
+
+
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.6ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.7ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/template_error.text.erb (29.3ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:20:59 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered comments/index.js.erb (11.6ms)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 0.2ms)
+
+ActionView::Template::Error (undefined method `first' for nil:NilClass):
+    1: $("div.comments").append('<%= @comment.first.content%>')
+  app/views/comments/index.js.erb:1:in `_app_views_comments_index_js_erb___447825351644879378_70348781531320'
+  app/controllers/comments_controller.rb:7:in `index'
+
+
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.6ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.7ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/template_error.text.erb (31.0ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 19:21:27 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:21:27 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:21:27 -0500
+
+
+Started GET "/assets/posts.self-b5b066e19898ce7dbe5103d80d28d43aaf59bcc72f3e2773ca300bbee01864c4.js?body=1" for ::1 at 2016-10-17 19:21:27 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 19:21:27 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 19:21:27 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 19:21:27 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 19:21:27 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 19:21:27 -0500
+
+
+Started GET "/posts/1/comments?_=1476750087451" for ::1 at 2016-10-17 19:21:29 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"_"=>"1476750087451", "post_id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered comments/index.js.erb (12.0ms)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.2ms)
+
+ActionView::Template::Error (undefined method `first' for nil:NilClass):
+    1: $("div.comments").append('<%= @comment.first.content%>')
+  app/views/comments/index.js.erb:1:in `_app_views_comments_index_js_erb___447825351644879378_70348814168880'
+  app/controllers/comments_controller.rb:7:in `index'
+
+
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.6ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.7ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/template_error.text.erb (37.4ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:21:29 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered comments/index.js.erb (12.4ms)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 0.2ms)
+
+ActionView::Template::Error (undefined method `first' for nil:NilClass):
+    1: $("div.comments").append('<%= @comment.first.content%>')
+  app/views/comments/index.js.erb:1:in `_app_views_comments_index_js_erb___447825351644879378_70348814168880'
+  app/controllers/comments_controller.rb:7:in `index'
+
+
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.7ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.7ms)
+  Rendered /Users/kaileegray/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/template_error.text.erb (31.4ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 19:21:59 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 32ms (Views: 16.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:21:59 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:21:59 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 19:21:59 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 19:21:59 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 19:21:59 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 19:21:59 -0500
+
+
+Started GET "/assets/posts.self-b5b066e19898ce7dbe5103d80d28d43aaf59bcc72f3e2773ca300bbee01864c4.js?body=1" for ::1 at 2016-10-17 19:21:59 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 19:21:59 -0500
+
+
+Started GET "/posts/1/comments?_=1476750119569" for ::1 at 2016-10-17 19:22:00 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"_"=>"1476750119569", "post_id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT  "comments".* FROM "comments" WHERE "comments"."post_id" = ?  ORDER BY "comments"."id" ASC LIMIT 1[0m  [["post_id", 1]]
+  Rendered comments/index.js.erb (6.2ms)
+Completed 200 OK in 30ms (Views: 23.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:22:00 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT  "comments".* FROM "comments" WHERE "comments"."post_id" = ?  ORDER BY "comments"."id" ASC LIMIT 1[0m  [["post_id", 1]]
+  Rendered comments/index.js.erb (0.9ms)
+Completed 200 OK in 18ms (Views: 15.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments?_=1476750119570" for ::1 at 2016-10-17 19:22:00 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"_"=>"1476750119570", "post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT  "comments".* FROM "comments" WHERE "comments"."post_id" = ?  ORDER BY "comments"."id" ASC LIMIT 1[0m  [["post_id", 1]]
+  Rendered comments/index.js.erb (0.9ms)
+Completed 200 OK in 17ms (Views: 15.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:22:00 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT  "comments".* FROM "comments" WHERE "comments"."post_id" = ?  ORDER BY "comments"."id" ASC LIMIT 1[0m  [["post_id", 1]]
+  Rendered comments/index.js.erb (0.9ms)
+Completed 200 OK in 19ms (Views: 17.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments?_=1476750119571" for ::1 at 2016-10-17 19:22:01 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"_"=>"1476750119571", "post_id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT  "comments".* FROM "comments" WHERE "comments"."post_id" = ?  ORDER BY "comments"."id" ASC LIMIT 1[0m  [["post_id", 1]]
+  Rendered comments/index.js.erb (1.0ms)
+Completed 200 OK in 18ms (Views: 15.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:22:01 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT  "comments".* FROM "comments" WHERE "comments"."post_id" = ?  ORDER BY "comments"."id" ASC LIMIT 1[0m  [["post_id", 1]]
+  Rendered comments/index.js.erb (0.8ms)
+Completed 200 OK in 17ms (Views: 15.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 19:24:01 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 22ms (Views: 19.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:24:01 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:24:01 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 19:24:01 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 19:24:01 -0500
+
+
+Started GET "/assets/posts.self-b5b066e19898ce7dbe5103d80d28d43aaf59bcc72f3e2773ca300bbee01864c4.js?body=1" for ::1 at 2016-10-17 19:24:01 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 19:24:01 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 19:24:01 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 19:24:01 -0500
+
+
+Started GET "/posts/1/comments?_=1476750241517" for ::1 at 2016-10-17 19:24:02 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"_"=>"1476750241517", "post_id"=>"1"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/index.js.erb (1.5ms)
+Completed 200 OK in 20ms (Views: 17.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:24:02 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/index.js.erb (0.7ms)
+Completed 200 OK in 16ms (Views: 13.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 19:24:21 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 24ms (Views: 21.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:24:21 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:24:21 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 19:24:21 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 19:24:21 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 19:24:21 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 19:24:21 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 19:24:21 -0500
+
+
+Started GET "/assets/posts.self-b5b066e19898ce7dbe5103d80d28d43aaf59bcc72f3e2773ca300bbee01864c4.js?body=1" for ::1 at 2016-10-17 19:24:21 -0500
+
+
+Started GET "/posts/1/comments?_=1476750262105" for ::1 at 2016-10-17 19:24:22 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"_"=>"1476750262105", "post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/index.js.erb (1.1ms)
+Completed 200 OK in 21ms (Views: 18.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:24:22 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/index.js.erb (0.8ms)
+Completed 200 OK in 20ms (Views: 17.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 19:25:32 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 18ms (Views: 17.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:25:32 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:25:32 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 19:25:32 -0500
+
+
+Started GET "/assets/posts.self-b5b066e19898ce7dbe5103d80d28d43aaf59bcc72f3e2773ca300bbee01864c4.js?body=1" for ::1 at 2016-10-17 19:25:32 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 19:25:32 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 19:25:32 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 19:25:32 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 19:25:32 -0500
+
+
+Started GET "/posts/1/comments?_=1476750332749" for ::1 at 2016-10-17 19:25:33 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"_"=>"1476750332749", "post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comment.html.erb (0.4ms)
+  Rendered comments/index.js.erb (13.3ms)
+Completed 200 OK in 28ms (Views: 26.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:25:33 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comment.html.erb (0.1ms)
+  Rendered comments/index.js.erb (10.9ms)
+Completed 200 OK in 27ms (Views: 24.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 19:26:05 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 16ms (Views: 14.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:26:05 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:26:05 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 19:26:05 -0500
+
+
+Started GET "/assets/posts.self-b5b066e19898ce7dbe5103d80d28d43aaf59bcc72f3e2773ca300bbee01864c4.js?body=1" for ::1 at 2016-10-17 19:26:05 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 19:26:05 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 19:26:05 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 19:26:05 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 19:26:05 -0500
+
+
+Started GET "/posts/1/comments?_=1476750366068" for ::1 at 2016-10-17 19:26:06 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"_"=>"1476750366068", "post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered comments/_comment.html.erb (0.4ms)
+  Rendered comments/index.js.erb (13.1ms)
+Completed 200 OK in 30ms (Views: 27.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:26:06 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered comments/_comment.html.erb (0.0ms)
+  Rendered comments/index.js.erb (11.2ms)
+Completed 200 OK in 27ms (Views: 23.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 19:26:22 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 22ms (Views: 19.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:26:22 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 19:26:22 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 19:26:22 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 19:26:22 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 19:26:22 -0500
+
+
+Started GET "/assets/posts.self-b5b066e19898ce7dbe5103d80d28d43aaf59bcc72f3e2773ca300bbee01864c4.js?body=1" for ::1 at 2016-10-17 19:26:22 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 19:26:22 -0500
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:26:22 -0500
+
+
+Started GET "/posts/1/comments?_=1476750382572" for ::1 at 2016-10-17 19:26:23 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"_"=>"1476750382572", "post_id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (1.2ms)
+  Rendered comments/index.js.erb (14.7ms)
+Completed 200 OK in 31ms (Views: 29.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:26:23 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.7ms)
+  Rendered comments/index.js.erb (10.5ms)
+Completed 200 OK in 26ms (Views: 23.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 19:27:06 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 24ms (Views: 22.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:27:06 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:27:06 -0500
+
+
+Started GET "/assets/posts.self-b5b066e19898ce7dbe5103d80d28d43aaf59bcc72f3e2773ca300bbee01864c4.js?body=1" for ::1 at 2016-10-17 19:27:06 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 19:27:06 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 19:27:06 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 19:27:06 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 19:27:06 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 19:27:06 -0500
+
+
+Started GET "/posts/1/comments?_=1476750427052" for ::1 at 2016-10-17 19:27:07 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"_"=>"1476750427052", "post_id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.8ms)
+  Rendered comments/index.js.erb (11.2ms)
+Completed 200 OK in 29ms (Views: 26.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:27:07 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.7ms)
+  Rendered comments/index.js.erb (10.7ms)
+Completed 200 OK in 25ms (Views: 22.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 19:27:34 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 16ms (Views: 14.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:27:34 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:27:34 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 19:27:34 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 19:27:34 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 19:27:34 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 19:27:34 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 19:27:34 -0500
+
+
+Started GET "/assets/posts.self-b5b066e19898ce7dbe5103d80d28d43aaf59bcc72f3e2773ca300bbee01864c4.js?body=1" for ::1 at 2016-10-17 19:27:34 -0500
+
+
+Started GET "/posts/1/comments?_=1476750454743" for ::1 at 2016-10-17 19:27:35 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"_"=>"1476750454743", "post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.8ms)
+  Rendered comments/index.js.erb (13.2ms)
+Completed 200 OK in 31ms (Views: 28.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:27:35 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.7ms)
+  Rendered comments/index.js.erb (12.6ms)
+Completed 200 OK in 28ms (Views: 26.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 19:27:49 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 18ms (Views: 16.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 19:27:49 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 19:27:49 -0500
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:27:49 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:27:49 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 19:27:49 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 19:27:49 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 19:27:49 -0500
+
+
+Started GET "/assets/posts.self-b5b066e19898ce7dbe5103d80d28d43aaf59bcc72f3e2773ca300bbee01864c4.js?body=1" for ::1 at 2016-10-17 19:27:49 -0500
+
+
+Started GET "/posts/1/comments?_=1476750469796" for ::1 at 2016-10-17 19:27:52 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"_"=>"1476750469796", "post_id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.7ms)
+  Rendered comments/index.js.erb (11.1ms)
+Completed 200 OK in 29ms (Views: 26.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:27:52 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (1.1ms)
+  Rendered comments/index.js.erb (12.3ms)
+Completed 200 OK in 30ms (Views: 26.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 19:28:03 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 15ms (Views: 13.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:28:03 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:28:03 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 19:28:03 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 19:28:03 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 19:28:03 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 19:28:03 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 19:28:03 -0500
+
+
+Started GET "/assets/posts.self-b5b066e19898ce7dbe5103d80d28d43aaf59bcc72f3e2773ca300bbee01864c4.js?body=1" for ::1 at 2016-10-17 19:28:03 -0500
+
+
+Started GET "/posts/1/comments?_=1476750483604" for ::1 at 2016-10-17 19:28:04 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"_"=>"1476750483604", "post_id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.8ms)
+  Rendered comments/index.js.erb (12.7ms)
+Completed 200 OK in 35ms (Views: 32.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:28:04 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.8ms)
+  Rendered comments/index.js.erb (11.2ms)
+Completed 200 OK in 28ms (Views: 25.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 19:29:51 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 22ms (Views: 14.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:29:51 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:29:51 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 19:29:51 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 19:29:51 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 19:29:51 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 19:29:51 -0500
+
+
+Started GET "/assets/posts.self-b5b066e19898ce7dbe5103d80d28d43aaf59bcc72f3e2773ca300bbee01864c4.js?body=1" for ::1 at 2016-10-17 19:29:51 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 19:29:51 -0500
+
+
+Started GET "/posts/1/comments?_=1476750591757" for ::1 at 2016-10-17 19:29:52 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"_"=>"1476750591757", "post_id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (4.9ms)
+  Rendered comments/index.js.erb (16.1ms)
+Completed 200 OK in 35ms (Views: 27.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:29:52 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.9ms)
+  Rendered comments/index.js.erb (11.5ms)
+Completed 200 OK in 26ms (Views: 23.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 19:30:33 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 21ms (Views: 14.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:30:33 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:30:33 -0500
+
+
+Started GET "/assets/posts.self-b5b066e19898ce7dbe5103d80d28d43aaf59bcc72f3e2773ca300bbee01864c4.js?body=1" for ::1 at 2016-10-17 19:30:33 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 19:30:33 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 19:30:33 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 19:30:33 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 19:30:33 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 19:30:33 -0500
+
+
+Started GET "/posts/1/comments?_=1476750633324" for ::1 at 2016-10-17 19:30:34 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"_"=>"1476750633324", "post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (5.3ms)
+  Rendered comments/index.js.erb (15.4ms)
+Completed 200 OK in 43ms (Views: 33.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:30:34 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.8ms)
+  Rendered comments/index.js.erb (11.6ms)
+Completed 200 OK in 27ms (Views: 24.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 19:32:06 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 23ms (Views: 16.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:32:06 -0500
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:32:06 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 19:32:06 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 19:32:07 -0500
+
+
+Started GET "/assets/posts.self-b5b066e19898ce7dbe5103d80d28d43aaf59bcc72f3e2773ca300bbee01864c4.js?body=1" for ::1 at 2016-10-17 19:32:07 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 19:32:07 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 19:32:07 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 19:32:07 -0500
+
+
+Started GET "/posts/1/comments?_=1476750727159" for ::1 at 2016-10-17 19:32:07 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"_"=>"1476750727159", "post_id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (4.6ms)
+  Rendered comments/index.js.erb (14.8ms)
+Completed 200 OK in 35ms (Views: 29.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:32:07 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.8ms)
+  Rendered comments/index.js.erb (11.1ms)
+Completed 200 OK in 25ms (Views: 22.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 19:33:13 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 98ms (Views: 97.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:33:13 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 19:33:13 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 19:33:14 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 19:33:14 -0500
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:33:14 -0500
+
+
+Started GET "/assets/posts.self-9bcaf156b669153f4a66213fc972f72021f1fbd456a9ef4184202948484155a2.js?body=1" for ::1 at 2016-10-17 19:33:14 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 19:33:14 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 19:33:14 -0500
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:33:14 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.8ms)
+  Rendered comments/index.js.erb (11.7ms)
+Completed 200 OK in 24ms (Views: 22.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-17 19:33:25 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 15ms (Views: 13.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:33:25 -0500
+
+
+Started GET "/assets/scaffolds.self-fc2282cf5bd177343eea166c85c551acd64ef112866f53b79731f226b93bab77.css?body=1" for ::1 at 2016-10-17 19:33:25 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-10-17 19:33:25 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-10-17 19:33:25 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-10-17 19:33:25 -0500
+
+
+Started GET "/assets/posts.self-9bcaf156b669153f4a66213fc972f72021f1fbd456a9ef4184202948484155a2.js?body=1" for ::1 at 2016-10-17 19:33:25 -0500
+
+
+Started GET "/assets/application.self-377610cd7c1509e934744c810e3b4cf672dfbcacac3274e7d039827e2ae0fcc7.js?body=1" for ::1 at 2016-10-17 19:33:25 -0500
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-17 19:33:25 -0500
+
+
+Started GET "/posts/1/comments" for ::1 at 2016-10-17 19:33:26 -0500
+Processing by CommentsController#index as JS
+  Parameters: {"post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered comments/_comments.html.erb (0.7ms)
+  Rendered comments/index.js.erb (10.6ms)
+Completed 200 OK in 23ms (Views: 21.7ms | ActiveRecord: 0.2ms)
