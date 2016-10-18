@@ -48,3 +48,24 @@
 //     e.preventDefault();
 //   })
 // })
+
+// $(function() {
+//   $("#new_comment").on("submit", function (e) {
+//
+//     $.ajax({
+//       type: ($("input[name='_method']").val() || this.method),
+//       url: this.action,
+//       data: $(this).serialize(), //json or query string serialization
+//       success: function(response) {
+//         $("#comment_content").val("");
+//         var $ol = $("div.comments ol");
+//         $ol.append(response)
+//       }
+//     });
+//
+//     // send post request to correct place
+//
+//
+//     e.preventDefault();
+//   })
+// })

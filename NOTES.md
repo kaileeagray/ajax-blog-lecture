@@ -45,3 +45,14 @@
     automatically triggers a click event -- remote true pattern
 
 2. The ability to submit a new comment via AJAX
+
+  A. hijack submit event of form
+  $(function() {
+    $("#new_comment").on("submit", function (e) {
+      e.preventDefault();
+    })
+  })
+  B. take form data, send to server as AJAX post request
+    - how will we know URL of post request
+  C. take data from AJAX post request, create comments
+  D. Send back HTML/JSON of comment that was added, inject into comment OL
